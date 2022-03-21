@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.control.cell.PropertyValueFactory?>
+<?import javafx.scene.layout.Background?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.BackgroundFill?>
+<ScrollPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml" prefHeight="810.0" prefWidth="1364.0"
+            fx:controller="com.sarbr.plugin.controller.SysParamController" stylesheets="@../css/bootstrapfx.css">
+    <HBox alignment="TOP_CENTER">
+        <VBox prefWidth="900" prefHeight="750">
+            <padding>
+                <Insets left="5.0"/>
+            </padding>
+            <TableView fx:id="table" editable="true" prefWidth="900" prefHeight="750">
+                <columns>
+                    <TableColumn fx:id="selectCol" resizable="false" text="选择" minWidth="50"/>
+                    <TableColumn fx:id="titleCol" id="title" resizable="false" text="标题" sortType="DESCENDING" minWidth="50">
+                        <cellValueFactory>
+                            <PropertyValueFactory property="title"/>
+                        </cellValueFactory>
+                    </TableColumn>
+                    <TableColumn fx:id="typeCol" id="type" resizable="false" text="分类" sortType="DESCENDING" minWidth="50">
+                        <cellValueFactory>
+                            <PropertyValueFactory property="type"/>
+                        </cellValueFactory>
+                    </TableColumn>
+                    <TableColumn resizable="false" text="键值" minWidth="200">
+                        <columns>
+                            <TableColumn fx:id="keyCol" id="key" resizable="false" text="键" minWidth="100">
+                                <cellValueFactory>
+                                    <PropertyValueFactory property="key"/>
+                                </cellValueFactory>
+                            </TableColumn>
+                            <TableColumn fx:id="valCol" id="val" resizable="false" text="值" minWidth="100">
+                                <cellValueFactory>
+                                    <PropertyValueFactory property="val"/>
+                                </cellValueFactory>
+                            </TableColumn>
+                        </columns>
+                    </TableColumn>
+                    <TableColumn fx:id="noteCol" id="note" resizable="false" text="备注" minWidth="400">
+                        <cellValueFactory>
+                            <PropertyValueFactory property="note"/>
+                        </cellValueFactory>
+                    </TableColumn>
+                </columns>
+            </TableView>
+        </VBox>
+        <VBox prefWidth="455" prefHeight="750" alignment="CENTER">
+            <Label styleClass="content-header" textFill="white">
+                系统参数维护(通过双击单元格编辑，回车键进行保存)
+            </Label>
+            <background>
+                <Background>
+                    <fills>
+                        <BackgroundFill fill="#2A2A2A"/>
+                    </fills>
+                </Background>
+            </background>
+            <HBox alignment="CENTER">
+                <padding>
+                    <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                </padding>
+                <Label textFill="white">
+                    标题：
+                </Label>
+                <TextField prefWidth="350" prefHeight="10"  fx:id="title"/>
+            </HBox>
+            <HBox alignment="CENTER">
+                <padding>
+                    <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                </padding>
+                <Label textFill="white">
+                    分类：
+                </Label>
+                <TextField prefWidth="350" prefHeight="10"  fx:id="type"/>
+            </HBox>
+            <HBox alignment="CENTER">
+                <padding>
+                    <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                </padding>
+                <Label textFill="white">
+                    键值：
+                </Label>
+                <TextField prefWidth="350" prefHeight="10"  fx:id="key" styleClass="required,text-success"/>
+            </HBox>
+            <HBox alignment="CENTER">
+                <padding>
+                    <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                </padding>
+                <Label textFill="white">
+                    数值：
+                </Label>
+                <TextField prefWidth="350" prefHeight="10"  fx:id="val"/>
+            </HBox>
+            <HBox alignment="CENTER">
+                <padding>
+                    <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                </padding>
+                <Label textFill="white">
+                    备注：
+                </Label>
+                <TextArea prefWidth="350" prefHeight="400"  fx:id="note"/>
+            </HBox>
+            <HBox alignment="CENTER">
+                <padding>
+                    <Insets top="15.0"/>
+                </padding>
+                <Button styleClass="btn-primary" textFill="black" onAction="#save" prefWidth="100" text="保存"/>
+                <Button styleClass="btn-danger" textFill="black" onAction="#delete" prefWidth="100" text="删除"/>
+            </HBox>
+        </VBox>
+    </HBox>
+</ScrollPane>

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.*?>
+<StackPane xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml" stylesheets="@../css/bootstrapfx.css"
+           fx:controller="com.sarbr.plugin.controller.DownloadController">
+    <ImageView nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true">
+        <Image url="/img/download.jpg"/>
+    </ImageView>
+    <VBox alignment="CENTER">
+        <HBox alignment="CENTER_RIGHT">
+            <Label  GridPane.columnIndex="0" alignment="CENTER_RIGHT">
+                线程数：
+            </Label>
+            <TextField prefWidth="400" prefHeight="10"  fx:id="threads">
+                30
+            </TextField>
+            <padding>
+                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+            </padding>
+        </HBox>
+
+        <HBox alignment="CENTER_RIGHT">
+            <Label GridPane.rowIndex="1" GridPane.columnIndex="0">
+                下载地址(URL)：
+            </Label>
+
+            <TextField prefWidth="400" prefHeight="10"  fx:id="downUrl"/>
+            <padding>
+                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+            </padding>
+        </HBox>
+
+        <HBox alignment="CENTER_RIGHT">
+            <Label>
+                保存路径：
+            </Label>
+            <children>
+                <Button prefWidth="400" onAction="#chooseDirectory" text="选择" styleClass="btn-block"/>
+            </children>
+            <padding>
+                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+            </padding>
+        </HBox>
+        <HBox alignment="CENTER_RIGHT">
+            <Label fx:id="loading" alignment="CENTER_RIGHT" textFill="black">loading.......</Label>
+            <padding>
+                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+            </padding>
+        </HBox>
+    </VBox>
+</StackPane>
+

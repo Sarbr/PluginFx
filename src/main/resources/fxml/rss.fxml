@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.collections.FXCollections?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.control.cell.PropertyValueFactory?>
+<?import javafx.scene.layout.*?>
+<?import java.lang.String?>
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml" style="-fx-background-color: #81CD75;"
+      fx:controller="com.sarbr.plugin.controller.RssController"
+      prefHeight="810.0" prefWidth="1364.0" stylesheets="@../css/bootstrapfx.css,@../css/css.css" alignment="CENTER">
+    <Label styleClass="content-header" textFill="white">
+        RSS维护(通过双击单元格编辑，回车键进行保存)
+    </Label>
+    <SplitPane style="-fx-background-color: #81CD75;">
+        <HBox>
+            <Label  GridPane.columnIndex="0" textFill="black">
+                名称：
+            </Label>
+            <TextField prefWidth="600" prefHeight="10"  fx:id="name"/>
+            <padding>
+                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+            </padding>
+        </HBox>
+        <HBox>
+            <Label GridPane.rowIndex="1" GridPane.columnIndex="0" textFill="black">
+                链接：
+            </Label>
+            <TextField prefWidth="600" prefHeight="10"  fx:id="link"/>
+            <padding>
+                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+            </padding>
+        </HBox>
+    </SplitPane>
+    <SplitPane style="-fx-background-color: #81CD75;" >
+        <HBox>
+            <Label GridPane.rowIndex="1" GridPane.columnIndex="0" textFill="black">
+                状态：
+            </Label>
+            <ComboBox fx:id="stateBox" prefWidth="600" prefHeight="10">
+                <items>
+                    <FXCollections fx:factory="observableArrayList">
+                        <String fx:value="启用"/>
+                        <String fx:value="禁用"/>
+                    </FXCollections>
+                </items>
+            </ComboBox>
+            <padding>
+                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+            </padding>
+        </HBox>
+        <HBox>
+            <Label GridPane.rowIndex="1" GridPane.columnIndex="0" textFill="black">
+                序号：
+            </Label>
+            <TextField prefWidth="600" prefHeight="10"  fx:id="orderNo"/>
+            <padding>
+                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+            </padding>
+        </HBox>
+    </SplitPane>
+    <VBox>
+        <HBox alignment="TOP_CENTER">
+            <Button styleClass="btn-primary" textFill="black" onAction="#save" prefWidth="200" text="保存"/>
+            <Button styleClass="btn-danger" textFill="black" onAction="#delete" prefWidth="200" text="删除"/>
+        </HBox>
+    </VBox>
+    <ScrollPane>
+        <TableView fx:id="table" editable="true" prefWidth="1344" prefHeight="650" >
+            <columns>
+                <TableColumn fx:id="selectCol" resizable="false" text="选择" minWidth="100"/>
+                <TableColumn fx:id="orderCol" id="order" resizable="false" text="序号" sortType="DESCENDING" minWidth="100">
+                    <cellValueFactory>
+                        <PropertyValueFactory property="orderNo"/>
+                    </cellValueFactory>
+                </TableColumn>
+                <TableColumn fx:id="nameCol" id="name" resizable="false" text="名称" minWidth="344">
+                    <cellValueFactory>
+                        <PropertyValueFactory property="name"/>
+                    </cellValueFactory>
+                </TableColumn>
+                <TableColumn resizable="false" text="属性">
+                    <columns>
+                        <TableColumn fx:id="urlCol" id="url" resizable="false" text="链接" minWidth="600">
+                            <cellValueFactory>
+                                <PropertyValueFactory property="url"/>
+                            </cellValueFactory>
+                        </TableColumn>
+                        <TableColumn fx:id="stateCol" id="state" resizable="false" text="状态" minWidth="200">
+                            <cellValueFactory>
+                                <PropertyValueFactory property="state"/>
+                            </cellValueFactory>
+                        </TableColumn>
+                    </columns>
+                </TableColumn>
+            </columns>
+        </TableView>
+    </ScrollPane>
+</VBox>

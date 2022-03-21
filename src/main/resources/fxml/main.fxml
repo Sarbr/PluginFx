@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.sarbr.plugin.observable.SyndEntryDateValue?>
+<?import javafx.scene.control.cell.PropertyValueFactory?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<VBox xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.sarbr.plugin.controller.MainController" fx:id="mainPane"
+      prefHeight="835.0" prefWidth="1378.0" stylesheets="@../css/bootstrapfx.css,@../css/css.css">
+<!--    <stylesheets>
+        <URL value="@/css/bootstrapfx.css"/>
+    </stylesheets>-->
+    <MenuBar prefHeight="15.0">
+        <Menu mnemonicParsing="false" text="开始">
+            <MenuItem mnemonicParsing="false" text="主页" id="main" onAction="#toPage"/>
+            <MenuItem mnemonicParsing="false" text="RSS配置" id="rss" onAction="#toPage"/>
+            <MenuItem mnemonicParsing="false" text="参数配置" id="sysParam" onAction="#toPage"/>
+            <MenuItem mnemonicParsing="false" text="关于" onAction="#about" id="GitHub"/>
+        </Menu>
+        <Menu mnemonicParsing="false" text="工具">
+            <MenuItem mnemonicParsing="false" text="查询天气" id="weather" onAction="#toPage"/>
+            <MenuItem mnemonicParsing="false" text="下载器" id="download" onAction="#toPage"/>
+        </Menu>
+        <Menu mnemonicParsing="false" text="便民工具" fx:id="urlMenu"/>
+    </MenuBar>
+    <AnchorPane fx:id="content" prefHeight="820" prefWidth="1378.0" >
+        <SplitPane style="-fx-background-color: #2A2A2A;">
+            <VBox prefHeight="375" prefWidth="690.0" >
+                <AnchorPane prefHeight="375" prefWidth="680.0" >
+                    <VBox alignment="CENTER">
+                        <Label fx:id="label1" textFill="white" prefHeight="20" alignment="TOP_CENTER"/>
+                        <ScrollPane>
+                            <TableView fx:id="tableRss1"  prefHeight="355" prefWidth="680.0">
+                                <columns>
+                                    <TableColumn resizable="false" text="序号" prefWidth="60">
+                                        <cellValueFactory>
+                                            <PropertyValueFactory property="comments"/>
+                                        </cellValueFactory>
+                                    </TableColumn>
+                                    <TableColumn resizable="false" text="名称" prefWidth="400">
+                                        <cellValueFactory>
+                                            <PropertyValueFactory property="title"/>
+                                        </cellValueFactory>
+                                    </TableColumn>
+                                    <TableColumn resizable="false" text="更新时间" prefWidth="180">
+                                        <cellValueFactory>
+                                            <SyndEntryDateValue/>
+                                        </cellValueFactory>
+                                    </TableColumn>
+                                </columns>
+                            </TableView>
+                        </ScrollPane>
+                    </VBox>
+                </AnchorPane>
+                <AnchorPane prefHeight="375" prefWidth="680.0">
+                    <VBox alignment="CENTER">
+                        <Label fx:id="label2" textFill="white" prefHeight="20" alignment="TOP_CENTER"/>
+                        <ScrollPane>
+                            <TableView fx:id="tableRss2"  prefHeight="355" prefWidth="680.0">
+                                <columns>
+                                    <TableColumn resizable="false" text="序号" prefWidth="60">
+                                        <cellValueFactory>
+                                            <PropertyValueFactory property="comments"/>
+                                        </cellValueFactory>
+                                    </TableColumn>
+                                    <TableColumn resizable="false" text="名称" prefWidth="400">
+                                        <cellValueFactory>
+                                            <PropertyValueFactory property="title"/>
+                                        </cellValueFactory>
+                                    </TableColumn>
+                                    <TableColumn resizable="false" text="更新时间" prefWidth="180">
+                                        <cellValueFactory>
+                                            <SyndEntryDateValue/>
+                                        </cellValueFactory>
+                                    </TableColumn>
+                                </columns>
+                            </TableView>
+                        </ScrollPane>
+                    </VBox>
+                </AnchorPane>
+            </VBox>
+            <VBox prefHeight="375" prefWidth="660.0" >
+                <AnchorPane prefHeight="375" prefWidth="66.0" >
+                    <VBox alignment="CENTER">
+                        <Label fx:id="label3" textFill="white" prefHeight="20" alignment="TOP_CENTER"/>
+                        <ScrollPane>
+                            <TableView fx:id="tableRss3"  prefHeight="355" prefWidth="660.0">
+                                <columns>
+                                    <TableColumn resizable="false" text="序号" prefWidth="60">
+                                        <cellValueFactory>
+                                            <PropertyValueFactory property="comments"/>
+                                        </cellValueFactory>
+                                    </TableColumn>
+                                    <TableColumn resizable="false" text="名称" prefWidth="400">
+                                        <cellValueFactory>
+                                            <PropertyValueFactory property="title"/>
+                                        </cellValueFactory>
+                                    </TableColumn>
+                                    <TableColumn resizable="false" text="更新时间" prefWidth="180">
+                                        <cellValueFactory>
+                                            <SyndEntryDateValue/>
+                                        </cellValueFactory>
+                                    </TableColumn>
+                                </columns>
+                            </TableView>
+                        </ScrollPane>
+                    </VBox>
+                </AnchorPane>
+                <AnchorPane prefHeight="375" prefWidth="660.0">
+                    <VBox alignment="CENTER">
+                        <Label fx:id="label4" textFill="white" prefHeight="20" alignment="TOP_CENTER"/>
+                        <ScrollPane>
+                            <TableView fx:id="tableRss4"  prefHeight="355" prefWidth="660.0">
+                                <columns>
+                                    <TableColumn resizable="false" text="序号" prefWidth="60">
+                                        <cellValueFactory>
+                                            <PropertyValueFactory property="comments"/>
+                                        </cellValueFactory>
+                                    </TableColumn>
+                                    <TableColumn resizable="false" text="名称" prefWidth="400">
+                                        <cellValueFactory>
+                                            <PropertyValueFactory property="title"/>
+                                        </cellValueFactory>
+                                    </TableColumn>
+                                    <TableColumn resizable="false" text="更新时间" prefWidth="180">
+                                        <cellValueFactory>
+                                            <SyndEntryDateValue/>
+                                        </cellValueFactory>
+                                    </TableColumn>
+                                </columns>
+                            </TableView>
+                        </ScrollPane>
+                    </VBox>
+                </AnchorPane>
+            </VBox>
+        </SplitPane>
+    </AnchorPane>
+</VBox>

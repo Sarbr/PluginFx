@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.collections.FXCollections?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import java.lang.String?>
+<?import javafx.scene.web.WebView?>
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml" alignment="CENTER" stylesheets="@../css/bootstrapfx.css"
+      fx:controller="com.sarbr.plugin.controller.WeatherController" prefHeight="810.0" prefWidth="1364.0" style="-fx-background-color: #81CD75;">
+    <Label alignment="CENTER" textFill="#0a1880" text="天气检索">
+        <VBox.margin>
+            <Insets bottom="50"/>
+        </VBox.margin>
+    </Label>
+    <HBox alignment="CENTER">
+        <padding>
+            <Insets bottom="10.0" left="-188.0"/>
+        </padding>
+        <Label text="查询类型" textFill="white">
+            <padding>
+                <Insets right="10.0"/>
+            </padding>
+        </Label>
+        <ChoiceBox fx:id="type" prefWidth="100" prefHeight="30">
+            <items>
+                <FXCollections fx:factory="observableArrayList">
+                    <String fx:value="city"/>
+                    <String fx:value="ip"/>
+                    <String fx:value="location"/>
+                </FXCollections>
+            </items>
+            <value>
+                <String fx:value="city"/>
+            </value>
+        </ChoiceBox>
+    </HBox>
+    <HBox alignment="CENTER">
+        <padding>
+            <Insets bottom="10.0"/>
+        </padding>
+        <Label text="查询内容" textFill="white">
+            <padding>
+                <Insets right="10.0"/>
+            </padding>
+        </Label>
+        <HBox>
+            <TextField prefWidth="200" prefHeight="30" fx:id="area" styleClass="text-info"/>
+            <Label>
+                <padding>
+                    <Insets right="10.0"/>
+                </padding>
+            </Label>
+            <Button onAction="#search" text="查询" styleClass="btn,btn-primary" prefWidth="50"/>
+        </HBox>
+    </HBox>
+    <HBox alignment="CENTER">
+        <WebView fx:id="content" prefHeight="500.0" prefWidth="900.0"/>
+    </HBox>
+</VBox>
