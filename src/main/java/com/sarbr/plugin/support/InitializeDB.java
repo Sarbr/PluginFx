@@ -15,6 +15,7 @@ import javax.annotation.Resource;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import java.io.File;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -42,7 +43,7 @@ public class InitializeDB {
     public <T>List<T> createByDataJson(String node, Class<T> clazz){
         List<T> list = new ArrayList<>();
         try {
-            final String json = FileUtils.fileRead(new File(Main.getURL("db/data.json").toURI()).getPath());
+            final String json = FileUtils.readFileToString(new File(Main.getURL("db/data.json").toURI()), StandardCharsets.UTF_8);
             for (JsonNode jsonNode : objectMapper.readTree(json).get(node)) {
                 list.add(objectMapper.readValue(jsonNode.toString(), clazz));
             }
@@ -56,7 +57,7 @@ public class InitializeDB {
     @Modifying
     public void createTable(){
         try {
-            final String sqlTable = FileUtils.fileRead(new File(Main.getURL("db/schema.sql").toURI()).getPath());
+            final String sqlTable = FileUtils.readFileToString(new File(Main.getURL("db/schema.sql").toURI()), StandardCharsets.UTF_8);
             entityManager.createNativeQuery(sqlTable).executeUpdate();
         } catch (Exception e) {
             throw new PluginException("初始化表信息失败");
